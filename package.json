@@ -1,5 +1,26 @@
 {
   "devDependencies": {
     "nodeman": "^1.1.2"
-  }
+  },
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "n1.js",
+  "dependencies": {
+    "colors": "^1.4.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/isha-sonani/nodejs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/isha-sonani/nodejs/issues"
+  },
+  "homepage": "https://github.com/isha-sonani/nodejs#readme"
 }
