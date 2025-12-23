@@ -1,0 +1,14 @@
+{
+  "name": "express",
+  "version": "1.0.0",
+  "description": "this is the package we created to explore node.js",
+  "main": "app.js",
+  "scripts": {
+    "test": " "
+  },
+  "author": "isha sonani",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

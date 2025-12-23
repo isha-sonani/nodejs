@@ -1,0 +1,11 @@
+middleware
+req res next
+
+folder structure
+controller,service,models
+
+sql
+queries
+aggregate functions
+joins
+operators

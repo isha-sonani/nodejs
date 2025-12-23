@@ -1,0 +1,41 @@
+node js 
+express
+postman
+api
+
+
+_ = previous variable..
+//n3.js
+synchronous or blocking:....
+    execute the code line by line..
+asynchronous or non-blocking:.....
+    it can't takes guaranteed to execute the code line by line
+    callbacks will fire.
+
+    err = the very first param. in n3.js will show error 
+    data = the second parameter will show the message which you want to display..
+
+//n4.js
+
+http status code:-
+200 - ok(get,push,del)
+201 - created(post)
+202 - accepted
+204 - no content(push,del)
+
+301 - moved permenantly
+302 - found
+304 - not modified
+
+400 - bad request
+401 - unauthorized
+403 - forbidden
+404 - not found
+
+500 - internal server error
+502 - bad gateway
+503 - service unavailable
+
+port no:-
+80 = by using this port user don't need to specify the port
+8000,8002,1153 = this are some another ports
