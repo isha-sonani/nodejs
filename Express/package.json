@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "this is the package we created to explore node.js",
   "main": "app.js",
+  "type": "commonjs",
   "scripts": {
     "test": " "
   },

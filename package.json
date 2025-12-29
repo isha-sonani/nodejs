@@ -7,7 +7,8 @@
   "description": "",
   "main": "n1.js",
   "dependencies": {
-    "colors": "^1.4.0"
+    "colors": "^1.4.0",
+    "jsonwebtoken": "^9.0.3"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
