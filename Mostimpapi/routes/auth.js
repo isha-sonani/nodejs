@@ -87,6 +87,23 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// 🔒 GET ALL USERS (PROTECTED)
+router.get("/users", authMiddleware, (req, res) => {
+  const sql = `
+    SELECT id, name, email, role
+    FROM users
+  `;
+
+  db.query(sql, (err, result) => {
+    if (err) {
+      return res.status(500).json({ message: "Database error" });
+    }
+
+    res.json(result); // ✅ password NOT included
+  });
+});
+
+
 router.get("/profile", authMiddleware, (req, res) => {
   db.query(
     "SELECT id, name, email FROM users WHERE id = ?",
@@ -98,9 +115,9 @@ router.get("/profile", authMiddleware, (req, res) => {
   );
 });
 
-router.post("/logout", (req, res) => {
-        res.json({message:"logout success fully"});
+// router.post("/logout", (req, res) => {
+//         res.json({message:"logout success fully"});
 
-});
+// });
 
 module.exports = router;
