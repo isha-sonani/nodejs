@@ -6,20 +6,30 @@ const runQuery = require("../utils/runquery");
 const authMiddleware = require("../middleware/auth");
 
 const router = express.Router();
+    
+    const generateToken = (user) => {
+    return jwt.sign(
+        { id: user.id, email: user.email },
+        process.env.jwt_secret,
+        { expiresIn: "1h" }
+    );
+};
 
 router.post("/signup", async (req,res)=>{
-        const {name,email,password} = req.body;
+       const { firstName, lastName, email, password, role } = req.body;
 
-        if(!name || !email || !password){
+
+        if (!firstName || !lastName || !email || !password || !role){
             return res.status(400).json({message:"all fields are required"});
         }
+            const fullName = firstName + " " + lastName;
 
         db.query(
             "select * from users where email = ?",
             [email],
             async(err,result)=>{
                 if (err){
-                    return res.status.json({message:"database error"})
+                    return res.status(500).json({message:"database error"})
                 }
                 if (result.length>0){
                     return res.status(400).json({message:"user already exist"});
@@ -28,15 +38,15 @@ router.post("/signup", async (req,res)=>{
                 const hashpass = await bcrypt.hash(password,10);
 
                 db.query(
-                    "insert into users (name,email,password) values (?,?,?)",
-                    [name,email,hashpass],
+                    "insert into users (name,email,password,role) values (?,?,?,?)",
+                    [fullName,email,hashpass,role],
                     (err,result)=>{
                         if(err){
                             return res.status(500).json({message:"insert failed"});
                         }
 
                         const token = jwt.sign(
-                            {id:result.insertID,email},
+                            {id:result.insertId,email},
                             process.env.jwt_secret,
                             {expiresIn:"1h"}
                         );
@@ -89,9 +99,7 @@ router.get("/profile", authMiddleware, (req, res) => {
 });
 
 router.post("/logout", (req, res) => {
-  const token = req.headers.authorization?.split(" ")[1]; // Get token from Bearer token
         res.json({message:"logout success fully"});
-  if (!token) return res.status(400).json({ message: "Token missing"});
 
 });
 
